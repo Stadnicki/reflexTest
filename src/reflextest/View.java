@@ -5,9 +5,6 @@
  */
 package reflextest;
 
-import java.awt.Image;
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author Adrian
@@ -46,10 +43,18 @@ public class View extends javax.swing.JFrame {
         exitButton.setBackground(new java.awt.Color(0, 0, 0));
         exitButton.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         exitButton.setForeground(new java.awt.Color(204, 204, 204));
+        exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/basic.jpg"))); // NOI18N
         exitButton.setText("EXIT");
         exitButton.setToolTipText("");
+        exitButton.setBorderPainted(false);
         exitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         exitButton.setFocusPainted(false);
+        exitButton.setFocusable(false);
+        exitButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        exitButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/pressed.jpg"))); // NOI18N
+        exitButton.setRequestFocusEnabled(false);
+        exitButton.setRolloverEnabled(false);
+        exitButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/rollover.jpg"))); // NOI18N
         exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitButtonActionPerformed(evt);
@@ -61,9 +66,16 @@ public class View extends javax.swing.JFrame {
         startButton.setBackground(new java.awt.Color(0, 0, 0));
         startButton.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         startButton.setForeground(new java.awt.Color(204, 204, 204));
+        startButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/basic.jpg"))); // NOI18N
         startButton.setText("START");
+        startButton.setBorderPainted(false);
         startButton.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
+        startButton.setFocusCycleRoot(true);
         startButton.setFocusPainted(false);
+        startButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        startButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/pressed.jpg"))); // NOI18N
+        startButton.setRequestFocusEnabled(false);
+        startButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/rollover.jpg"))); // NOI18N
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startButtonActionPerformed(evt);
@@ -90,7 +102,7 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_startButtonActionPerformed
 
     /**

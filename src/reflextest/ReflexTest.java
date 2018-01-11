@@ -6,5 +6,4 @@ public class ReflexTest {
     {
         Controller theGame = new Controller();
     }
-    
 }

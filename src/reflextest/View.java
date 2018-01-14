@@ -33,9 +33,11 @@ public class View extends javax.swing.JFrame {
         buttonBack = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         panelSimple = new javax.swing.JPanel();
+        testLeft = new javax.swing.JLabel();
         infoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         setPreferredSize(new java.awt.Dimension(1366, 768));
         setResizable(false);
         setSize(new java.awt.Dimension(1366, 768));
@@ -216,18 +218,30 @@ public class View extends javax.swing.JFrame {
         panelModes.setBounds(0, 0, 1366, 768);
 
         panelSimple.setBackground(new java.awt.Color(24, 24, 24));
+        panelSimple.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         panelSimple.setFocusTraversalPolicyProvider(true);
         panelSimple.setPreferredSize(new java.awt.Dimension(1366, 768));
         panelSimple.setLayout(null);
 
+        testLeft.setFont(new java.awt.Font("Verdana", 1, 120)); // NOI18N
+        testLeft.setForeground(new java.awt.Color(204, 204, 204));
+        testLeft.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        testLeft.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        testLeft.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        panelSimple.add(testLeft);
+        testLeft.setBounds(0, 390, 1370, 380);
+
         infoLabel.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         infoLabel.setForeground(new java.awt.Color(204, 204, 204));
         infoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        infoLabel.setText("PRESS  SPACE TO START");
-        infoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        infoLabel.setText("PRESS  SPACEBAR TO START\n");
+        infoLabel.setToolTipText("");
+        infoLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        infoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         infoLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        infoLabel.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         panelSimple.add(infoLabel);
-        infoLabel.setBounds(0, 0, 1370, 770);
+        infoLabel.setBounds(0, 0, 1370, 380);
 
         getContentPane().add(panelSimple);
         panelSimple.setBounds(0, 0, 1366, 768);
@@ -239,6 +253,22 @@ public class View extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_exitButtonActionPerformed
 
+    public void showMainMenu()
+    {
+        panelSimple.setVisible(false);
+        panelModes.setVisible(false);
+        panelMenu.setVisible(true);
+        infoLabel.setText("PRESS  SPACEBAR TO START");
+    }
+    
+    public void showModesMenu()
+    {
+        panelSimple.setVisible(false);
+        panelModes.setVisible(true);
+        panelMenu.setVisible(false);
+        infoLabel.setText("PRESS  SPACEBAR TO START");
+    }
+    
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         panelMenu.setVisible(false);
         panelModes.setVisible(true);
@@ -246,7 +276,7 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void buttonAimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAimActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_buttonAimActionPerformed
 
     private void buttonColoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonColoursActionPerformed
@@ -308,6 +338,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JPanel panelModes;
     public javax.swing.JPanel panelSimple;
     private javax.swing.JButton startButton;
+    public javax.swing.JLabel testLeft;
     // End of variables declaration//GEN-END:variables
 
     void simpleTest()

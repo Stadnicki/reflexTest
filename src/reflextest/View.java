@@ -36,6 +36,7 @@ public class View extends javax.swing.JFrame {
         infoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         setPreferredSize(new java.awt.Dimension(1366, 768));
         setResizable(false);
         setSize(new java.awt.Dimension(1366, 768));
@@ -216,6 +217,7 @@ public class View extends javax.swing.JFrame {
         panelModes.setBounds(0, 0, 1366, 768);
 
         panelSimple.setBackground(new java.awt.Color(24, 24, 24));
+        panelSimple.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         panelSimple.setFocusTraversalPolicyProvider(true);
         panelSimple.setPreferredSize(new java.awt.Dimension(1366, 768));
         panelSimple.setLayout(null);
@@ -223,8 +225,9 @@ public class View extends javax.swing.JFrame {
         infoLabel.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         infoLabel.setForeground(new java.awt.Color(204, 204, 204));
         infoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        infoLabel.setText("PRESS  SPACE TO START");
-        infoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        infoLabel.setText("PRESS  SPACEBAR TO START\n");
+        infoLabel.setToolTipText("");
+        infoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         infoLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         panelSimple.add(infoLabel);
         infoLabel.setBounds(0, 0, 1370, 770);
@@ -239,6 +242,14 @@ public class View extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_exitButtonActionPerformed
 
+    public void showMainMenu()
+    {
+        panelSimple.setVisible(false);
+        panelModes.setVisible(false);
+        panelMenu.setVisible(true);
+        infoLabel.setText("PRESS  SPACEBAR TO START");
+    }
+    
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         panelMenu.setVisible(false);
         panelModes.setVisible(true);
@@ -246,7 +257,7 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void buttonAimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAimActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_buttonAimActionPerformed
 
     private void buttonColoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonColoursActionPerformed

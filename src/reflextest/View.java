@@ -29,12 +29,15 @@ public class View extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         buttonSimple = new javax.swing.JButton();
         buttonAim = new javax.swing.JButton();
+        buttonGoBack = new javax.swing.JButton();
         buttonColours = new javax.swing.JButton();
-        buttonBack = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         panelSimple = new javax.swing.JPanel();
+        retryButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
         testLeft = new javax.swing.JLabel();
         infoLabel = new javax.swing.JLabel();
+        backgroundLab = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
@@ -164,11 +167,32 @@ public class View extends javax.swing.JFrame {
         panelModes.add(buttonAim);
         buttonAim.setBounds(433, 200, 500, 100);
 
+        buttonGoBack.setBackground(new java.awt.Color(0, 0, 0));
+        buttonGoBack.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        buttonGoBack.setForeground(new java.awt.Color(204, 204, 204));
+        buttonGoBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/basic.jpg"))); // NOI18N
+        buttonGoBack.setText("◄");
+        buttonGoBack.setBorderPainted(false);
+        buttonGoBack.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
+        buttonGoBack.setFocusCycleRoot(true);
+        buttonGoBack.setFocusPainted(false);
+        buttonGoBack.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonGoBack.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/pressed.jpg"))); // NOI18N
+        buttonGoBack.setRequestFocusEnabled(false);
+        buttonGoBack.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/rollover.jpg"))); // NOI18N
+        buttonGoBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGoBackActionPerformed(evt);
+            }
+        });
+        panelModes.add(buttonGoBack);
+        buttonGoBack.setBounds(433, 500, 500, 100);
+
         buttonColours.setBackground(new java.awt.Color(0, 0, 0));
-        buttonColours.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        buttonColours.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         buttonColours.setForeground(new java.awt.Color(204, 204, 204));
         buttonColours.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/basic.jpg"))); // NOI18N
-        buttonColours.setText("◄");
+        buttonColours.setText("COLOURS");
         buttonColours.setBorderPainted(false);
         buttonColours.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         buttonColours.setFocusCycleRoot(true);
@@ -183,28 +207,7 @@ public class View extends javax.swing.JFrame {
             }
         });
         panelModes.add(buttonColours);
-        buttonColours.setBounds(433, 500, 500, 100);
-
-        buttonBack.setBackground(new java.awt.Color(0, 0, 0));
-        buttonBack.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
-        buttonBack.setForeground(new java.awt.Color(204, 204, 204));
-        buttonBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/basic.jpg"))); // NOI18N
-        buttonBack.setText("COLOURS");
-        buttonBack.setBorderPainted(false);
-        buttonBack.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
-        buttonBack.setFocusCycleRoot(true);
-        buttonBack.setFocusPainted(false);
-        buttonBack.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        buttonBack.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/pressed.jpg"))); // NOI18N
-        buttonBack.setRequestFocusEnabled(false);
-        buttonBack.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/rollover.jpg"))); // NOI18N
-        buttonBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonBackActionPerformed(evt);
-            }
-        });
-        panelModes.add(buttonBack);
-        buttonBack.setBounds(433, 350, 500, 100);
+        buttonColours.setBounds(433, 350, 500, 100);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/background.gif"))); // NOI18N
@@ -223,6 +226,50 @@ public class View extends javax.swing.JFrame {
         panelSimple.setPreferredSize(new java.awt.Dimension(1366, 768));
         panelSimple.setLayout(null);
 
+        retryButton.setBackground(new java.awt.Color(0, 0, 0));
+        retryButton.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        retryButton.setForeground(new java.awt.Color(204, 204, 204));
+        retryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/basic.jpg"))); // NOI18N
+        retryButton.setText("RETRY");
+        retryButton.setBorderPainted(false);
+        retryButton.setVisible(false);
+        retryButton.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
+        retryButton.setFocusCycleRoot(true);
+        retryButton.setFocusPainted(false);
+        retryButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        retryButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/pressed.jpg"))); // NOI18N
+        retryButton.setRequestFocusEnabled(false);
+        retryButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/rollover.jpg"))); // NOI18N
+        retryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                retryButtonActionPerformed(evt);
+            }
+        });
+        panelSimple.add(retryButton);
+        retryButton.setBounds(433, 200, 500, 100);
+
+        backButton.setBackground(new java.awt.Color(0, 0, 0));
+        backButton.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        backButton.setForeground(new java.awt.Color(204, 204, 204));
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/basic.jpg"))); // NOI18N
+        backButton.setText("◄");
+        backButton.setBorderPainted(false);
+        backButton.setVisible(false);
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
+        backButton.setFocusCycleRoot(true);
+        backButton.setFocusPainted(false);
+        backButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        backButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/pressed.jpg"))); // NOI18N
+        backButton.setRequestFocusEnabled(false);
+        backButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/rollover.jpg"))); // NOI18N
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        panelSimple.add(backButton);
+        backButton.setBounds(433, 350, 500, 100);
+
         testLeft.setFont(new java.awt.Font("Verdana", 1, 120)); // NOI18N
         testLeft.setForeground(new java.awt.Color(204, 204, 204));
         testLeft.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -236,12 +283,18 @@ public class View extends javax.swing.JFrame {
         infoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         infoLabel.setText("PRESS  SPACEBAR TO START\n");
         infoLabel.setToolTipText("");
-        infoLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         infoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         infoLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        infoLabel.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         panelSimple.add(infoLabel);
-        infoLabel.setBounds(0, 0, 1370, 380);
+        infoLabel.setBounds(0, 275, 1370, 100);
+
+        backgroundLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/background.gif"))); // NOI18N
+        backgroundLab.setMaximumSize(new java.awt.Dimension(1366, 768));
+        backgroundLab.setMinimumSize(new java.awt.Dimension(1366, 768));
+        backgroundLab.setPreferredSize(new java.awt.Dimension(1366, 768));
+        backgroundLab.setVisible(true);
+        panelSimple.add(backgroundLab);
+        backgroundLab.setBounds(0, 0, 1376, 768);
 
         getContentPane().add(panelSimple);
         panelSimple.setBounds(0, 0, 1366, 768);
@@ -279,11 +332,11 @@ public class View extends javax.swing.JFrame {
 
     }//GEN-LAST:event_buttonAimActionPerformed
 
-    private void buttonColoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonColoursActionPerformed
+    private void buttonGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGoBackActionPerformed
         panelModes.setVisible(false);
         panelMenu.setVisible(true);
         currPanelName = "panelMenu";
-    }//GEN-LAST:event_buttonColoursActionPerformed
+    }//GEN-LAST:event_buttonGoBackActionPerformed
 
     private void buttonSimpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSimpleActionPerformed
         panelModes.setVisible(false);
@@ -291,9 +344,17 @@ public class View extends javax.swing.JFrame {
         simpleTest();
     }//GEN-LAST:event_buttonSimpleActionPerformed
 
-    private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
+    private void buttonColoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonColoursActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonBackActionPerformed
+    }//GEN-LAST:event_buttonColoursActionPerformed
+
+    private void retryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retryButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_retryButtonActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backButtonActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -324,9 +385,11 @@ public class View extends javax.swing.JFrame {
     Long currTime = null;
     String currPanelName;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton backButton;
+    public javax.swing.JLabel backgroundLab;
     private javax.swing.JButton buttonAim;
-    private javax.swing.JButton buttonBack;
     private javax.swing.JButton buttonColours;
+    private javax.swing.JButton buttonGoBack;
     public javax.swing.JButton buttonSimple;
     private javax.swing.JButton exitButton;
     public javax.swing.JLabel infoLabel;
@@ -337,6 +400,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JPanel panelMenu;
     private javax.swing.JPanel panelModes;
     public javax.swing.JPanel panelSimple;
+    public javax.swing.JButton retryButton;
     private javax.swing.JButton startButton;
     public javax.swing.JLabel testLeft;
     // End of variables declaration//GEN-END:variables

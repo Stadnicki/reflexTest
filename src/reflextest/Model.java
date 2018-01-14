@@ -15,7 +15,7 @@ public class Model
     int getRandomTime()
     {
         Random generator = new Random(); 
-        int change = generator.nextInt(300) + 150;
+        int change = generator.nextInt(4500) + 750;
         return change;
     }
     

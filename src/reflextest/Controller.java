@@ -1,5 +1,6 @@
 package reflextest;
-import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -31,21 +32,17 @@ public class Controller implements ActionListener
                     reflexWindow.infoLabel.setText("TO SOON, PRESS SPACEBAR TO START AGAIN");
                     reflexModel.toSoon = false;
                     testTask.cancel();
+                    reflexModel.clearTimesArr();
                 }
                 else
                 {
                     if(reflexModel.step == 0)
                     {
                         reflexModel.toSoon=true;
-                        reflexWindow.backgroundLab.setVisible(false);
-                        reflexWindow.testLeft.setVisible(true);
                         changeTime = reflexModel.getRandomTime(); 
                         System.out.println("Random time s: "+(float)changeTime/1000);
-                        reflexWindow.infoLabel.setText("WAIT FOR WHITE SCREEN, THEN PRESS SPACEBAR");
-                        tempStr = "";
-                        for(int i=3; i>reflexModel.step; i--)
-                            tempStr = tempStr+"*";
-                        
+                        reflexWindow.waitScreen();
+                        tempStr = reflexModel.setTestsLeft();
                         reflexWindow.testLeft.setText(tempStr);
                         
                         testTask = new TimerTask() {
@@ -53,10 +50,7 @@ public class Controller implements ActionListener
                             public void run() {
                                     reflexModel.setStartTime(); 
                                     reflexModel.toSoon=false;
-                                    reflexWindow.infoLabel.setText("PRESS SPACEBAR");
-                                    reflexWindow.panelSimple.setBackground(Color.white);
-                                    reflexWindow.infoLabel.setForeground(new java.awt.Color(51, 51, 51));
-                                    reflexWindow.testLeft.setForeground(new java.awt.Color(51, 51, 51));
+                                    reflexWindow.whiteScreen();
                             }
                         };
                         
@@ -68,10 +62,8 @@ public class Controller implements ActionListener
                         reflexModel.toSoon=true;
                         changeTime = reflexModel.getRandomTime(); 
                         System.out.println("Random time s: "+(float)changeTime/1000);
-                        reflexWindow.testLeft.setForeground(new java.awt.Color(204, 204, 204));
-                        reflexWindow.infoLabel.setText("WAIT FOR WHITE SCREEN, THEN PRESS SPACEBAR");
-                        reflexWindow.panelSimple.setBackground(Color.black);
-                        reflexWindow.infoLabel.setForeground(new java.awt.Color(204, 204, 204));          
+                        reflexWindow.waitScreen(); 
+                        
                         tempStr = "";
                         for(int i=3; i>reflexModel.step; i--)
                             tempStr = tempStr+"*";
@@ -83,50 +75,65 @@ public class Controller implements ActionListener
                             public void run() {
                                     reflexModel.toSoon=false;
                                     reflexModel.setStartTime(); 
-                                    reflexWindow.infoLabel.setText("PRESS SPACEBAR");
-                                    reflexWindow.panelSimple.setBackground(Color.white);
-                                    reflexWindow.infoLabel.setForeground(new java.awt.Color(51, 51, 51));
-                                    reflexWindow.testLeft.setForeground(new java.awt.Color(51, 51, 51));
+                                    reflexWindow.whiteScreen();
                             }
                         };
                          
                         testTimer.schedule(testTask, changeTime);
                     }
                     else if( reflexModel.step == 3)
-                    {                 
-                        reflexWindow.backgroundLab.setVisible(true);
+                    {        
                         reflexModel.setStopTime();
-                        reflexWindow.infoLabel.setBounds(0, 50, 1370, 100);
-                        reflexWindow.backButton.setVisible(true);
-                        reflexWindow.retryButton.setVisible(true);  
-                        reflexModel.step++;
+                        reflexWindow.afterSimpleMenu();
                         reflexWindow.infoLabel.setText("AVERAGE TIME: "+reflexModel.setGetAverage()+" ms");
-                        System.out.println("Sredni czas: "+reflexModel.setGetAverage());
-                        reflexWindow.infoLabel.setForeground(new java.awt.Color(204, 204, 204));
-                        reflexWindow.panelSimple.setBackground(Color.black);
-                        reflexWindow.testLeft.setVisible(false);
+                        reflexModel.step++;
+                        reflexModel.clearTimesArr();
                     }
                 }
+            }
+            if("panelAimPrepare".equals(reflexWindow.currPanelName))
+            {
+                System.out.println("panelAim");
+                reflexWindow.currPanelName = "panelAimGame";
+                if(reflexModel.step == 0)
+                {
+                        reflexWindow.prepareAimScreen();
+                        changeTime = reflexModel.getRandomTime();
+                        Point squareP = reflexModel.getPoint();
+                        
+                        
+                        testTask = new TimerTask() {
+                            @Override
+                            public void run() {
+                                    reflexModel.setStartTime(); 
+                                    reflexWindow.showSquare(squareP);
+                                    
+                            }
+                        };
+                        testTimer.schedule(testTask, changeTime);
+                    }
             }
         }
 
         @Override
-        public void keyPressed(KeyEvent e) {
-            
+        public void keyPressed(KeyEvent e) 
+        { 
         }
 
         @Override
-        public void keyReleased(KeyEvent e) {
-           
+        public void keyReleased(KeyEvent e) 
+        {
         }
     };
     public Controller()
     {
-        reflexWindow.requestFocus();
         reflexWindow.panelSimple.addKeyListener(reflexKeyListener);
-        reflexWindow.panelSimple.requestFocus();
+        reflexWindow.panelAim.addKeyListener(reflexKeyListener);
         reflexWindow.retryButton.addActionListener(this);
         reflexWindow.backButton.addActionListener(this);
+        reflexWindow.buttonRetryAim.addActionListener(this);
+        reflexWindow.buttonBackAim.addActionListener(this);
+        reflexWindow.square.addActionListener(this);
     }
 
     @Override
@@ -134,22 +141,51 @@ public class Controller implements ActionListener
         if((JButton)e.getSource() ==  (JButton)reflexWindow.retryButton)
         {          
             reflexModel.step = 0;
-            reflexWindow.backButton.setVisible(false);
-            reflexWindow.infoLabel.setVisible(true);
-            reflexWindow.retryButton.setVisible(false);  
-            reflexWindow.infoLabel.setText("PRESS SPACEBAR TO START");
-            reflexWindow.testLeft.setForeground(new java.awt.Color(204, 204, 204));
-            reflexWindow.infoLabel.setBounds(0, 275, 1370, 100);
+            reflexWindow.resetAfterGame();
         }
         else if((JButton)e.getSource() ==  (JButton)reflexWindow.backButton)
         {          
             reflexModel.step = 0;
-            reflexWindow.backButton.setVisible(false);
-            reflexWindow.infoLabel.setVisible(true);
-            reflexWindow.retryButton.setVisible(false);  
-            reflexWindow.infoLabel.setText("PRESS SPACEBAR TO START");
-            reflexWindow.testLeft.setForeground(new java.awt.Color(204, 204, 204));
-            reflexWindow.infoLabel.setBounds(0, 275, 1370, 100);
+            reflexWindow.resetAfterGame();
+            reflexWindow.showModesMenu();
+        }
+        else if((JButton)e.getSource() ==  (JButton)reflexWindow.square)
+        {  
+            reflexWindow.square.setVisible(false);
+            reflexModel.setStopTime(); 
+            changeTime = reflexModel.getRandomTime();
+            Point squareP = reflexModel.getPoint();
+             
+            testTask = new TimerTask() 
+            {
+                @Override
+                public void run() 
+                {
+                    reflexModel.setStartTime(); 
+                    reflexWindow.showSquare(squareP);         
+                }
+            };
+            testTimer.schedule(testTask, changeTime);
+            
+            if(reflexModel.step == 5)
+            {
+                reflexWindow.infoLabelAim.setText("AVERAGE TIME: "+reflexModel.setGetAverage()+" ms");
+                reflexWindow.aimResult();
+                testTask.cancel();
+            }
+
+        }
+        else if((JButton)e.getSource() ==  (JButton)reflexWindow.buttonRetryAim)
+        {          
+            reflexModel.step = 0;
+            reflexWindow.playAimTest();
+            reflexModel.clearTimesArr();
+        }
+        else if((JButton)e.getSource() ==  (JButton)reflexWindow.buttonBackAim)
+        {          
+            reflexModel.step = 0;
+            reflexWindow.playAimTest();
+            reflexModel.clearTimesArr();
             reflexWindow.showModesMenu();
         }
     }

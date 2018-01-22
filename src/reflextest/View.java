@@ -1,9 +1,7 @@
 package reflextest;
-
 import java.awt.Color;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
+import java.awt.Dimension;
+import java.awt.Point;
 
 public class View extends javax.swing.JFrame {
     public View() 
@@ -30,7 +28,6 @@ public class View extends javax.swing.JFrame {
         buttonSimple = new javax.swing.JButton();
         buttonAim = new javax.swing.JButton();
         buttonGoBack = new javax.swing.JButton();
-        buttonColours = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         panelSimple = new javax.swing.JPanel();
         retryButton = new javax.swing.JButton();
@@ -38,6 +35,12 @@ public class View extends javax.swing.JFrame {
         testLeft = new javax.swing.JLabel();
         infoLabel = new javax.swing.JLabel();
         backgroundLab = new javax.swing.JLabel();
+        panelAim = new javax.swing.JPanel();
+        buttonRetryAim = new javax.swing.JButton();
+        buttonBackAim = new javax.swing.JButton();
+        square = new javax.swing.JButton();
+        infoLabelAim = new javax.swing.JLabel();
+        animatedBackAim = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
@@ -100,7 +103,7 @@ public class View extends javax.swing.JFrame {
         jLabel3.setText("Adrian Stadnicki");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         panelMenu.add(jLabel3);
-        jLabel3.setBounds(1226, 720, 140, 20);
+        jLabel3.setBounds(0, 2, 140, 20);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/background.gif"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(1366, 768));
@@ -186,28 +189,7 @@ public class View extends javax.swing.JFrame {
             }
         });
         panelModes.add(buttonGoBack);
-        buttonGoBack.setBounds(433, 500, 500, 100);
-
-        buttonColours.setBackground(new java.awt.Color(0, 0, 0));
-        buttonColours.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
-        buttonColours.setForeground(new java.awt.Color(204, 204, 204));
-        buttonColours.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/basic.jpg"))); // NOI18N
-        buttonColours.setText("COLOURS");
-        buttonColours.setBorderPainted(false);
-        buttonColours.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
-        buttonColours.setFocusCycleRoot(true);
-        buttonColours.setFocusPainted(false);
-        buttonColours.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        buttonColours.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/pressed.jpg"))); // NOI18N
-        buttonColours.setRequestFocusEnabled(false);
-        buttonColours.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/rollover.jpg"))); // NOI18N
-        buttonColours.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonColoursActionPerformed(evt);
-            }
-        });
-        panelModes.add(buttonColours);
-        buttonColours.setBounds(433, 350, 500, 100);
+        buttonGoBack.setBounds(433, 350, 500, 100);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/background.gif"))); // NOI18N
@@ -299,6 +281,49 @@ public class View extends javax.swing.JFrame {
         getContentPane().add(panelSimple);
         panelSimple.setBounds(0, 0, 1366, 768);
 
+        panelAim.setLayout(null);
+
+        buttonRetryAim.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        buttonRetryAim.setForeground(new java.awt.Color(204, 204, 204));
+        buttonRetryAim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/basic.jpg"))); // NOI18N
+        buttonRetryAim.setText("RETRY");
+        buttonRetryAim.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonRetryAim.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/pressed.jpg"))); // NOI18N
+        buttonRetryAim.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/rollover.jpg"))); // NOI18N
+        panelAim.add(buttonRetryAim);
+        buttonRetryAim.setBounds(433, 200, 500, 100);
+        buttonRetryAim.setVisible(false);
+
+        buttonBackAim.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        buttonBackAim.setForeground(new java.awt.Color(204, 204, 204));
+        buttonBackAim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/basic.jpg"))); // NOI18N
+        buttonBackAim.setText("◄");
+        buttonBackAim.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonBackAim.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/pressed.jpg"))); // NOI18N
+        buttonBackAim.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/rollover.jpg"))); // NOI18N
+        panelAim.add(buttonBackAim);
+        buttonBackAim.setBounds(433, 350, 500, 100);
+        buttonBackAim.setVisible(false);
+        panelAim.add(square);
+        square.setBounds(470, 130, 100, 100);
+        square.setVisible(false);
+
+        infoLabelAim.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        infoLabelAim.setForeground(new java.awt.Color(204, 204, 204));
+        infoLabelAim.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        infoLabelAim.setText("<html><center>CLICK ON WHITE SQUARE WHEN YOU SEE IT <br>PRESS SPACEBAR TO START</center></html>");
+        panelAim.add(infoLabelAim);
+        infoLabelAim.setBounds(0, 275, 1366, 100);
+
+        animatedBackAim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/background.gif"))); // NOI18N
+        animatedBackAim.setText("jLabel5");
+        panelAim.add(animatedBackAim);
+        animatedBackAim.setBounds(0, 0, 1366, 768);
+
+        getContentPane().add(panelAim);
+        panelAim.setBounds(0, 0, 1366, 768);
+        panelAim.setVisible(false);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -306,12 +331,84 @@ public class View extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_exitButtonActionPerformed
 
+    public void whiteScreen()
+    {
+        infoLabel.setText("PRESS SPACEBAR");
+        panelSimple.setBackground(Color.white);
+        infoLabel.setForeground(new java.awt.Color(51, 51, 51));
+        testLeft.setForeground(new java.awt.Color(51, 51, 51));
+    }
+
+    public void afterSimpleMenu()
+    {
+        animatedBack();
+        infoLabel.setBounds(0, 50, 1370, 100);
+        backButton.setVisible(true);
+        retryButton.setVisible(true); 
+        testLeft.setVisible(false);
+        infoLabel.setForeground(new java.awt.Color(204, 204, 204));
+        panelSimple.setBackground(Color.black);
+    }
+    
+    public void resetAfterGame()
+    {
+        backButton.setVisible(false);
+        infoLabel.setVisible(true);
+        retryButton.setVisible(false);  
+        infoLabel.setText("PRESS SPACEBAR TO START");
+        testLeft.setForeground(new java.awt.Color(204, 204, 204));
+        infoLabel.setBounds(0, 275, 1370, 100);
+    }
+    
+    public void animatedBack()
+    {
+        backgroundLab.setVisible(true);
+    }
+    
+    
+    public void waitScreen()
+    {
+        testLeft.setForeground(new java.awt.Color(204, 204, 204));
+        infoLabel.setText("WAIT FOR WHITE SCREEN, THEN PRESS SPACEBAR");
+        panelSimple.setBackground(Color.black);
+        infoLabel.setForeground(new java.awt.Color(204, 204, 204));    
+        testLeft.setVisible(true);
+        backgroundLab.setVisible(false);
+    }
+    
+    public void prepareAimScreen()
+    {
+        animatedBackAim.setVisible(false);
+        infoLabelAim.setForeground(new java.awt.Color(204, 204, 204));   
+        panelAim.setBackground(Color.black);
+        infoLabelAim.setVisible(false);
+        buttonRetryAim.setVisible(false);
+        buttonBackAim.setVisible(false);
+    }
+    
+    public void aimResult()
+    {
+        animatedBackAim.setVisible(true);
+        infoLabelAim.setVisible(true);
+        infoLabelAim.setBounds(0, 50, 1370, 100);
+        buttonRetryAim.setVisible(true);
+        buttonBackAim.setVisible(true);
+    }
+    
+    public void showSquare(Point p)
+    {
+        square.setVisible(true);
+        square.setLocation(p);
+    }
+    
     public void showMainMenu()
     {
         panelSimple.setVisible(false);
         panelModes.setVisible(false);
         panelMenu.setVisible(true);
+        panelAim.setVisible(false);
         infoLabel.setText("PRESS  SPACEBAR TO START");
+        currPanelName = "panelMenu";
     }
     
     public void showModesMenu()
@@ -319,7 +416,31 @@ public class View extends javax.swing.JFrame {
         panelSimple.setVisible(false);
         panelModes.setVisible(true);
         panelMenu.setVisible(false);
+        panelAim.setVisible(false);
         infoLabel.setText("PRESS  SPACEBAR TO START");
+        currPanelName = "panelModes";
+    }
+ 
+    public void playAimTest()
+    {
+        panelModes.setVisible(false);
+        infoLabelAim.setText("<html><center>CLICK ON WHITE SQUARE WHEN YOU SEE IT <br>PRESS SPACEBAR TO START</center></html>");
+        panelAim.setVisible(true);
+        currPanelName = "panelAimPrepare";
+        panelAim.requestFocus();
+        infoLabelAim.setBounds(0, 275, 1370, 100);
+        infoLabelAim.setVisible(true);
+        buttonRetryAim.setVisible(false);
+        buttonBackAim.setVisible(false);
+    }
+    
+    public void simpleTest()
+    {
+        panelModes.setVisible(false);
+        panelSimple.setBackground(Color.black);
+        panelSimple.setVisible(true);
+        panelSimple.requestFocus();
+        currPanelName = "panelSimple"; 
     }
     
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
@@ -329,7 +450,7 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void buttonAimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAimActionPerformed
-
+            playAimTest();
     }//GEN-LAST:event_buttonAimActionPerformed
 
     private void buttonGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGoBackActionPerformed
@@ -339,14 +460,8 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonGoBackActionPerformed
 
     private void buttonSimpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSimpleActionPerformed
-        panelModes.setVisible(false);
-        currPanelName = "panelSimple"; 
-        simpleTest();
+         simpleTest();
     }//GEN-LAST:event_buttonSimpleActionPerformed
-
-    private void buttonColoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonColoursActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonColoursActionPerformed
 
     private void retryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retryButtonActionPerformed
         // TODO add your handling code here:
@@ -364,20 +479,12 @@ public class View extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new View().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new View().setVisible(true);
         });
     }
 
@@ -385,31 +492,29 @@ public class View extends javax.swing.JFrame {
     Long currTime = null;
     String currPanelName;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel animatedBackAim;
     public javax.swing.JButton backButton;
     public javax.swing.JLabel backgroundLab;
     private javax.swing.JButton buttonAim;
-    private javax.swing.JButton buttonColours;
+    public javax.swing.JButton buttonBackAim;
     private javax.swing.JButton buttonGoBack;
+    public javax.swing.JButton buttonRetryAim;
     public javax.swing.JButton buttonSimple;
     private javax.swing.JButton exitButton;
     public javax.swing.JLabel infoLabel;
+    public javax.swing.JLabel infoLabelAim;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    public javax.swing.JPanel panelAim;
     private javax.swing.JPanel panelMenu;
     private javax.swing.JPanel panelModes;
     public javax.swing.JPanel panelSimple;
     public javax.swing.JButton retryButton;
+    public javax.swing.JButton square;
     private javax.swing.JButton startButton;
     public javax.swing.JLabel testLeft;
     // End of variables declaration//GEN-END:variables
 
-    void simpleTest()
-    {
-        
-        panelSimple.setBackground(Color.black);
-        panelSimple.setVisible(true);
-        panelSimple.requestFocus();
-    }
 }

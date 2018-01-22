@@ -97,6 +97,7 @@ public class Controller implements ActionListener
                 reflexWindow.currPanelName = "panelAimGame";
                 if(reflexModel.step == 0)
                 {
+                        reflexWindow.setDots(5, reflexModel.step);
                         reflexWindow.prepareAimScreen();
                         changeTime = reflexModel.getRandomTime();
                         Point squareP = reflexModel.getPoint();
@@ -151,6 +152,7 @@ public class Controller implements ActionListener
         }
         else if((JButton)e.getSource() ==  (JButton)reflexWindow.square)
         {  
+            reflexWindow.setDots(5, reflexModel.step);
             reflexWindow.square.setVisible(false);
             reflexModel.setStopTime(); 
             changeTime = reflexModel.getRandomTime();

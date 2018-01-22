@@ -10,7 +10,7 @@ import java.util.Random;
 public class Model 
 {
     int step = 0;
-    long startTime, stopTime, reflexTime, averageTime=0;
+    long startTime, stopTime, reflexTime, sumTime=0;
     boolean toSoon = false;
     List<Long> resList = new ArrayList<>();
     
@@ -49,8 +49,8 @@ public class Model
     public Point getPoint()
     {
         Random genP = new Random();
-        int x = genP.nextInt(1166)+50;
-        int y = genP.nextInt(560)+10;
+        int x = genP.nextInt(1266)+50;
+        int y = genP.nextInt(525)+10;
         Point squareP = new Point(x,y);
         return squareP;
     }    
@@ -62,13 +62,13 @@ public class Model
             System.out.print( resList.get(i) + "+");
         
         System.out.print( "/" + resList.size() + " = "); 
-        averageTime = 0;
+        sumTime = 0;
         for(i = 0; i < resList.size(); i++)
-            averageTime += resList.get(i);
+            sumTime += resList.get(i);
         
-        System.out.println( averageTime / resList.size()); 
+        System.out.println( sumTime / resList.size()); 
     
-        return (averageTime / resList.size());
+        return (sumTime / resList.size());
     }
     
     public String setTestsLeft()

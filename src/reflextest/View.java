@@ -36,6 +36,7 @@ public class View extends javax.swing.JFrame {
         infoLabel = new javax.swing.JLabel();
         backgroundLab = new javax.swing.JLabel();
         panelAim = new javax.swing.JPanel();
+        testsLeftAim = new javax.swing.JLabel();
         buttonRetryAim = new javax.swing.JButton();
         buttonBackAim = new javax.swing.JButton();
         square = new javax.swing.JButton();
@@ -283,6 +284,16 @@ public class View extends javax.swing.JFrame {
 
         panelAim.setLayout(null);
 
+        testsLeftAim.setFont(new java.awt.Font("Verdana", 1, 120)); // NOI18N
+        testsLeftAim.setForeground(new java.awt.Color(204, 204, 204));
+        testsLeftAim.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        testsLeftAim.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        panelAim.add(testsLeftAim);
+        testsLeftAim.setBounds(0, 580, 1366, 200);
+        testsLeftAim.setVisible(false);
+        testsLeftAim.getAccessibleContext().setAccessibleName("");
+        testsLeftAim.getAccessibleContext().setAccessibleDescription("");
+
         buttonRetryAim.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         buttonRetryAim.setForeground(new java.awt.Color(204, 204, 204));
         buttonRetryAim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/basic.jpg"))); // NOI18N
@@ -384,6 +395,19 @@ public class View extends javax.swing.JFrame {
         infoLabelAim.setVisible(false);
         buttonRetryAim.setVisible(false);
         buttonBackAim.setVisible(false);
+    }
+    
+    public void setDots(int testsNum, int step)
+    {
+        String temp="";
+        int i;
+        i = testsNum-step;
+        for(; i>0; i--)
+        {
+            temp += '*';
+        }
+        testsLeftAim.setText(temp);
+        testsLeftAim.setVisible(true);
     }
     
     public void aimResult()
@@ -515,6 +539,7 @@ public class View extends javax.swing.JFrame {
     public javax.swing.JButton square;
     private javax.swing.JButton startButton;
     public javax.swing.JLabel testLeft;
+    private javax.swing.JLabel testsLeftAim;
     // End of variables declaration//GEN-END:variables
 
 }

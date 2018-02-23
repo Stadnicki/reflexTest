@@ -1,9 +1,10 @@
 package reflextest;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Point;
+import javax.swing.JFrame;
 
-public class View extends javax.swing.JFrame {
+public class View extends javax.swing.JFrame 
+{
     public View() 
     {
         initComponents();
@@ -12,6 +13,8 @@ public class View extends javax.swing.JFrame {
         panelMenu.setVisible(true);
         panelModes.setVisible(false);
         panelSimple.setVisible(false); 
+        this.setTitle("Reflex Test");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")
@@ -21,7 +24,6 @@ public class View extends javax.swing.JFrame {
         panelMenu = new javax.swing.JPanel();
         exitButton = new javax.swing.JButton();
         startButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         panelModes = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -96,15 +98,6 @@ public class View extends javax.swing.JFrame {
         });
         panelMenu.add(startButton);
         startButton.setBounds(433, 50, 500, 100);
-
-        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/autor.jpg"))); // NOI18N
-        jLabel3.setText("Adrian Stadnicki");
-        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        panelMenu.add(jLabel3);
-        jLabel3.setBounds(0, 2, 140, 20);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reflextest/background.gif"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(1366, 768));
@@ -291,7 +284,6 @@ public class View extends javax.swing.JFrame {
         panelAim.add(testsLeftAim);
         testsLeftAim.setBounds(0, 580, 1366, 200);
         testsLeftAim.setVisible(false);
-        testsLeftAim.getAccessibleContext().setAccessibleName("");
         testsLeftAim.getAccessibleContext().setAccessibleDescription("");
 
         buttonRetryAim.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
@@ -338,7 +330,8 @@ public class View extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) 
+    {//GEN-FIRST:event_exitButtonActionPerformed
         dispose();
     }//GEN-LAST:event_exitButtonActionPerformed
 
@@ -495,19 +488,24 @@ public class View extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_backButtonActionPerformed
 
-    public static void main(String args[]) {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+    public static void main(String args[]) 
+    {
+        try 
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) 
+            {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) 
+        {
             java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-        java.awt.EventQueue.invokeLater(() -> {
+        java.awt.EventQueue.invokeLater(() -> 
+        {
             new View().setVisible(true);
         });
     }
@@ -529,7 +527,6 @@ public class View extends javax.swing.JFrame {
     public javax.swing.JLabel infoLabelAim;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     public javax.swing.JPanel panelAim;
     private javax.swing.JPanel panelMenu;
@@ -541,5 +538,4 @@ public class View extends javax.swing.JFrame {
     public javax.swing.JLabel testLeft;
     private javax.swing.JLabel testsLeftAim;
     // End of variables declaration//GEN-END:variables
-
 }

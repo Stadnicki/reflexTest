@@ -1,5 +1,4 @@
 package reflextest;
-import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +18,8 @@ public class Controller implements ActionListener
     Model reflexModel = new Model();
     int changeTime;
     
-    KeyListener reflexKeyListener = new KeyListener() {
+    KeyListener reflexKeyListener = new KeyListener() 
+    {
         @Override
         public void keyTyped(KeyEvent e) 
         {
@@ -45,9 +45,11 @@ public class Controller implements ActionListener
                         tempStr = reflexModel.setTestsLeft();
                         reflexWindow.testLeft.setText(tempStr);
                         
-                        testTask = new TimerTask() {
+                        testTask = new TimerTask() 
+                        {
                             @Override
-                            public void run() {
+                            public void run() 
+                            {
                                     reflexModel.setStartTime(); 
                                     reflexModel.toSoon=false;
                                     reflexWindow.whiteScreen();
@@ -70,9 +72,11 @@ public class Controller implements ActionListener
                         
                         reflexWindow.testLeft.setText(tempStr);
                         
-                         testTask = new TimerTask() {
+                         testTask = new TimerTask() 
+                         {
                             @Override
-                            public void run() {
+                            public void run() 
+                            {
                                     reflexModel.toSoon=false;
                                     reflexModel.setStartTime(); 
                                     reflexWindow.whiteScreen();
